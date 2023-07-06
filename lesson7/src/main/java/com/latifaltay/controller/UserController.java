@@ -2,6 +2,9 @@ package com.latifaltay.controller;
 
 
 import com.latifaltay.dto.User;
+import com.latifaltay.service.UserService;
+import com.latifaltay.service.impl.UserServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,9 +14,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(path = "/api")
 public class UserController {
 
+    @Autowired
+    private UserService userService;
+
     @GetMapping(path = "/users/{userId}")
     public User getUserById(@PathVariable Long userId){
-        return null;
+        return userService.getUserById(userId);
     }
 
 
